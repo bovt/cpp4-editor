@@ -2,8 +2,7 @@ name: 'CPP hw4_editor'
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "master" ]
 
 jobs:
   build:
