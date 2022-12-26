@@ -15,6 +15,12 @@ jobs:
       - run: cmake . -DPATCH_VERSION=${{ github.run_number }}
       - run: cmake --build .
       - run: cmake --build . --target package
+      - run: doxygen ./Doxyfile
+      - name: Deploy docs v2
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/html
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
