@@ -4,14 +4,19 @@
 
 int main()
 {
-    my::Canvas& canvas = std::cout;
+//    my::Canvas& canvas = std::cout;
+//    my::File& file = std::cout;
     my::Application app;
-    const my::Document::Ptr& doc = app.create_document();
 
-    const my::IShape::Ptr& circle_ptr = doc->add_circle(my::Point{ 100, 150 }, 35);
-    circle_ptr->color(my::Color{ 155, 200, 255, 0 });
-    const my::IShape::Ptr& segment_ptr = doc->add_segment(my::Point{ 75, 50 }, my::Point{ -30, -210 });
-    segment_ptr->color(my::Color{ 255, 0, 0, 60 });
+    const my::DocumentEntity::Ptr& docEntity = app.create_document_entity();
+//    const my::DocumentView::Ptr docView = app.create_document_view(docEntity);
+/*
+    const my::IShapeEntity::Ptr& circleEntity_ptr = docEntity->load_circle_entity();//my::Point{ 100, 150 }, 35);
+    const my::IShapeView::Ptr& circleView_ptr = docView->attach_circle_view(circleEntity_ptr);//my::Point{ 100, 150 }, 35);
 
-    doc->render(canvas);
-}
+    circleEntity_ptr->color(my::Color{ 155, 200, 255, 0 });
+
+    docView->render(canvas);
+    docEntity->store(file);
+*/
+ }

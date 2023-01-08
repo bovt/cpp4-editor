@@ -1,8 +1,8 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include "../document/document.h"
-#include "../document/file_io.h"
+#include "../document/document_entity.h"
+//#include "../document/document_view.h"
 
 #include <string>
 #include <unordered_set>
@@ -19,50 +19,32 @@ class Application
 {
 public:
     /**
-     * @brief Creates a new empty document
-     * @return Pointer to a created document
+     * @brief Creates a new empty document entity
+     * @return Pointer to a created document entity
      */
-    const Document::Ptr& create_document()
+    const DocumentEntity::Ptr& create_document_entity()
     {
-        auto [it, b_inserted] = m_documents.emplace(std::make_unique<Document>());
+        auto [it, b_inserted] = m_documentEntities.emplace(std::make_unique<DocumentEntity>());
         assert(b_inserted);
         return *it;
     }
 
     /**
-     * @brief Imports document from a file
-     * @return Pointer to the imported document
+     * @brief Creates a new empty document view
+     * @return Pointer to a created document view
      */
-    const Document::Ptr& import_document(const std::string& filename)
+  /*  const DocumentView::Ptr& create_document_view(DocumentEntity::Ptr& docEntity)
     {
-        auto [it, b_inserted] = m_documents.emplace(file_io::import_document(filename));
+        auto [it, b_inserted] = m_documentViews.emplace(std::make_unique<DocumentView>(docEntity));
         assert(b_inserted);
         return *it;
     }
+*/
 
-    /**
-     * @brief Exports document to a file
-     */
-    void export_document(const Document::Ptr& document, const std::string& filename)
-    {
-        file_io::export_document(document, filename);
-    }
-
-    /**
-     * @brief Closes the given document
-     * @param[in] document Document to be closed
-     * @return `true` if a document existed and was closed, `false` otherwise
-     */
-    bool close_document(const Document::Ptr& document)
-    {
-        std::size_t removed = m_documents.erase(document);
-        if (removed == 0)
-            return false;
-        return true;
-    }
 
 private:
-    std::unordered_set<Document::Ptr> m_documents;
+//    std::unordered_set<DocumentView::Ptr> m_documentViews;
+    std::unordered_set<DocumentEntity::Ptr> m_documentEntities;
 };
 
 } // namespace my

@@ -1,7 +1,7 @@
-#ifndef SHAPE_H
-#define SHAPE_H
+#ifndef SHAPEE_H
+#define SHAPEE_H
 
-#include "../render/renderable.h"
+#include "../interfaces/storable.h"
 #include "../utils/color.h"
 
 #include <memory>
@@ -10,20 +10,14 @@ namespace my
 {
 
 /**
- * @brief The IShape interface
+ * @brief The IShapeEntity interface
  */
-class IShape : public IRenderable
+class IShapeEntity : public IStorable
 {
 public:
-    using Ptr = std::unique_ptr<IShape>;
+    using Ptr = std::unique_ptr<IShapeEntity>;
 
-    virtual ~IShape() = default;
-
-    /**
-     * @brief Creates a copy of current shape
-     * @return pointer to the clone
-     */
-    virtual Ptr clone() = 0;
+    virtual ~IShapeEntity() = default;
 
     /**
      * @brief Color setter
@@ -49,4 +43,4 @@ private:
 
 } // namespace my
 
-#endif // SHAPE_H
+#endif // SHAPEE_H

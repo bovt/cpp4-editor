@@ -11,7 +11,7 @@ set(SRC_PATH "src/")
 set(CMAKE_EXE_LINKER_FLAGS " -static")
 include_directories("application/")
 include_directories("document/")
-include_directories("render/")
+include_directories("interfaces/")
 include_directories("shape/")
 include_directories("utils/")
 
