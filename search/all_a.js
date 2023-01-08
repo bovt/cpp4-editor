@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['point_29',['Point',['../structmy_1_1Point.html',1,'my']]],
-  ['point_2eh_30',['point.h',['../point_8h.html',1,'']]],
-  ['ptr_31',['Ptr',['../classmy_1_1Document.html#a86dd42be639a61f26dbd348b0f88f2af',1,'my::Document::Ptr()'],['../classmy_1_1IShape.html#a6cd06a2bd82e76720b6babc501b7d069',1,'my::IShape::Ptr()']]]
+  ['r_26',['r',['../structmy_1_1Color.html#a6d6dc709374e45226fe3a7dfdd0a78c1',1,'my::Color']]],
+  ['readme_2emd_27',['README.md',['../README_8md.html',1,'']]],
+  ['render_28',['render',['../classmy_1_1CircleView.html#a55603fdd384f8556681871a43d9549b1',1,'my::CircleView']]]
 ];

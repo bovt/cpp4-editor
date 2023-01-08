@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['import_5fdocument_82',['import_document',['../classmy_1_1Application.html#ae7c865e9b5b2247978de8f68c7e42fad',1,'my::Application::import_document()'],['../namespacemy_1_1file__io.html#a64f2922de7599832be8d916a5eff7a56',1,'my::file_io::import_document()']]]
+  ['render_70',['render',['../classmy_1_1CircleView.html#a55603fdd384f8556681871a43d9549b1',1,'my::CircleView']]]
 ];

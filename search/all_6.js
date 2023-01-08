@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['g_21',['g',['../structmy_1_1Color.html#a2c2e05642c4f08832a9aa19cfc00e817',1,'my::Color']]]
+  ['load_19',['load',['../classmy_1_1DocumentEntity.html#abc601a4c17a9acfc0d00dbee2fce662e',1,'my::DocumentEntity']]]
 ];

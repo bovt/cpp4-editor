@@ -1,4 +1,9 @@
 var searchData=
 [
-  ['y_43',['y',['../structmy_1_1Point.html#a79c2fbeea484c52e0a4fcad77dad6ef5',1,'my::Point']]]
+  ['_7ecircleentity_34',['~CircleEntity',['../classmy_1_1CircleEntity.html#a2c7ed8895db73265e5526d78352ef15e',1,'my::CircleEntity']]],
+  ['_7ecircleview_35',['~CircleView',['../classmy_1_1CircleView.html#a32db622655976d58c5491eac2a7f39a2',1,'my::CircleView']]],
+  ['_7edocumententity_36',['~DocumentEntity',['../classmy_1_1DocumentEntity.html#a1a676db59039f9829f33ff1fc930ca79',1,'my::DocumentEntity']]],
+  ['_7edocumentview_37',['~DocumentView',['../classmy_1_1DocumentView.html#a033cf808f4ed5b1241aba30e2b18f587',1,'my::DocumentView']]],
+  ['_7eishape_38',['~IShape',['../classmy_1_1IShape.html#a99ab53f9696b0b2714a4546d9c63901d',1,'my::IShape']]],
+  ['_7eishapeentity_39',['~IShapeEntity',['../classmy_1_1IShapeEntity.html#afe1fa114e1f666e08da41d26ca5fecb8',1,'my::IShapeEntity']]]
 ];

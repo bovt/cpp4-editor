@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['document_80',['Document',['../classmy_1_1Document.html#afded01a88681c272b4d47e5488b62d7d',1,'my::Document']]]
+  ['load_67',['load',['../classmy_1_1DocumentEntity.html#abc601a4c17a9acfc0d00dbee2fce662e',1,'my::DocumentEntity']]]
 ];

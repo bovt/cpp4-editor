@@ -72,8 +72,8 @@ $(function() {
 <a href="application_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef APPLICATION_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define APPLICATION_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../document/document.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../document/file_io.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../document/document_entity.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//#include &quot;../document/document_view.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;unordered_set&gt;</span></div>
@@ -85,48 +85,33 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classmy_1_1Application.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmy_1_1Application.html">Application</a></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classmy_1_1Application.html#ad30ff75fce6693147e381a4b5e329506">   25</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="classmy_1_1Document.html#a86dd42be639a61f26dbd348b0f88f2af">Document::Ptr</a>&amp; <a class="code" href="classmy_1_1Application.html#ad30ff75fce6693147e381a4b5e329506">create_document</a>()</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classmy_1_1Application.html#a3e022a5ec1184a89c0700ee835a79341">   25</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="classmy_1_1DocumentEntity.html#adf3b43179366baafe2fd2e99d1b6c5ca">DocumentEntity::Ptr</a>&amp; <a class="code" href="classmy_1_1Application.html#a3e022a5ec1184a89c0700ee835a79341">create_document_entity</a>()</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">auto</span> [it, b_inserted] = m_documents.emplace(std::make_unique&lt;Document&gt;());</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">auto</span> [it, b_inserted] = m_documentEntities.emplace(std::make_unique&lt;DocumentEntity&gt;());</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        assert(b_inserted);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">return</span> *it;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classmy_1_1Application.html#ae7c865e9b5b2247978de8f68c7e42fad">   36</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="classmy_1_1Document.html#a86dd42be639a61f26dbd348b0f88f2af">Document::Ptr</a>&amp; <a class="code" href="classmy_1_1Application.html#ae7c865e9b5b2247978de8f68c7e42fad">import_document</a>(<span class="keyword">const</span> std::string&amp; filename)</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">auto</span> [it, b_inserted] = m_documents.emplace(<a class="code" href="namespacemy_1_1file__io.html#a64f2922de7599832be8d916a5eff7a56">file_io::import_document</a>(filename));</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        assert(b_inserted);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">return</span> *it;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classmy_1_1Application.html#a6d9830b1138e0c254de1dd1cf34eda46">   46</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classmy_1_1Application.html#a6d9830b1138e0c254de1dd1cf34eda46">export_document</a>(<span class="keyword">const</span> <a class="code" href="classmy_1_1Document.html#a86dd42be639a61f26dbd348b0f88f2af">Document::Ptr</a>&amp; document, <span class="keyword">const</span> std::string&amp; filename)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="namespacemy_1_1file__io.html#a6cac2b9ea45e82786b91993f385a5573">file_io::export_document</a>(document, filename);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classmy_1_1Application.html#a1d5c05f4e18f7619928dd13e2a7b99b6">   56</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classmy_1_1Application.html#a1d5c05f4e18f7619928dd13e2a7b99b6">close_document</a>(<span class="keyword">const</span> <a class="code" href="classmy_1_1Document.html#a86dd42be639a61f26dbd348b0f88f2af">Document::Ptr</a>&amp; document)</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        std::size_t removed = m_documents.erase(document);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">if</span> (removed == 0)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    std::unordered_set&lt;Document::Ptr&gt; m_documents;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;} <span class="comment">// namespace my</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// APPLICATION_H</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="comment">/*  const DocumentView::Ptr&amp; create_document_view(DocumentEntity::Ptr&amp; docEntity)</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">        auto [it, b_inserted] = m_documentViews.emplace(std::make_unique&lt;DocumentView&gt;(docEntity));</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">        assert(b_inserted);</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">        return *it;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">//    std::unordered_set&lt;DocumentView::Ptr&gt; m_documentViews;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::unordered_set&lt;DocumentEntity::Ptr&gt; m_documentEntities;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;} <span class="comment">// namespace my</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// APPLICATION_H</span></div>
 <div class="ttc" id="aclassmy_1_1Application_html"><div class="ttname"><a href="classmy_1_1Application.html">my::Application</a></div><div class="ttdoc">The Application class A controller for documents.</div><div class="ttdef"><b>Definition:</b> application.h:19</div></div>
-<div class="ttc" id="aclassmy_1_1Application_html_a1d5c05f4e18f7619928dd13e2a7b99b6"><div class="ttname"><a href="classmy_1_1Application.html#a1d5c05f4e18f7619928dd13e2a7b99b6">my::Application::close_document</a></div><div class="ttdeci">bool close_document(const Document::Ptr &amp;document)</div><div class="ttdoc">Closes the given document.</div><div class="ttdef"><b>Definition:</b> application.h:56</div></div>
-<div class="ttc" id="aclassmy_1_1Application_html_a6d9830b1138e0c254de1dd1cf34eda46"><div class="ttname"><a href="classmy_1_1Application.html#a6d9830b1138e0c254de1dd1cf34eda46">my::Application::export_document</a></div><div class="ttdeci">void export_document(const Document::Ptr &amp;document, const std::string &amp;filename)</div><div class="ttdoc">Exports document to a file.</div><div class="ttdef"><b>Definition:</b> application.h:46</div></div>
-<div class="ttc" id="aclassmy_1_1Application_html_ad30ff75fce6693147e381a4b5e329506"><div class="ttname"><a href="classmy_1_1Application.html#ad30ff75fce6693147e381a4b5e329506">my::Application::create_document</a></div><div class="ttdeci">const Document::Ptr &amp; create_document()</div><div class="ttdoc">Creates a new empty document.</div><div class="ttdef"><b>Definition:</b> application.h:25</div></div>
-<div class="ttc" id="aclassmy_1_1Application_html_ae7c865e9b5b2247978de8f68c7e42fad"><div class="ttname"><a href="classmy_1_1Application.html#ae7c865e9b5b2247978de8f68c7e42fad">my::Application::import_document</a></div><div class="ttdeci">const Document::Ptr &amp; import_document(const std::string &amp;filename)</div><div class="ttdoc">Imports document from a file.</div><div class="ttdef"><b>Definition:</b> application.h:36</div></div>
-<div class="ttc" id="aclassmy_1_1Document_html_a86dd42be639a61f26dbd348b0f88f2af"><div class="ttname"><a href="classmy_1_1Document.html#a86dd42be639a61f26dbd348b0f88f2af">my::Document::Ptr</a></div><div class="ttdeci">std::unique_ptr&lt; Document &gt; Ptr</div><div class="ttdef"><b>Definition:</b> document.h:23</div></div>
-<div class="ttc" id="anamespacemy_1_1file__io_html_a64f2922de7599832be8d916a5eff7a56"><div class="ttname"><a href="namespacemy_1_1file__io.html#a64f2922de7599832be8d916a5eff7a56">my::file_io::import_document</a></div><div class="ttdeci">Document::Ptr import_document(const std::string &amp;)</div><div class="ttdoc">Imports document from a file.</div><div class="ttdef"><b>Definition:</b> file_io.h:18</div></div>
-<div class="ttc" id="anamespacemy_1_1file__io_html_a6cac2b9ea45e82786b91993f385a5573"><div class="ttname"><a href="namespacemy_1_1file__io.html#a6cac2b9ea45e82786b91993f385a5573">my::file_io::export_document</a></div><div class="ttdeci">void export_document(const Document::Ptr &amp;, const std::string &amp;)</div><div class="ttdoc">Exports document to a file.</div><div class="ttdef"><b>Definition:</b> file_io.h:26</div></div>
+<div class="ttc" id="aclassmy_1_1Application_html_a3e022a5ec1184a89c0700ee835a79341"><div class="ttname"><a href="classmy_1_1Application.html#a3e022a5ec1184a89c0700ee835a79341">my::Application::create_document_entity</a></div><div class="ttdeci">const DocumentEntity::Ptr &amp; create_document_entity()</div><div class="ttdoc">Creates a new empty document entity.</div><div class="ttdef"><b>Definition:</b> application.h:25</div></div>
+<div class="ttc" id="aclassmy_1_1DocumentEntity_html_adf3b43179366baafe2fd2e99d1b6c5ca"><div class="ttname"><a href="classmy_1_1DocumentEntity.html#adf3b43179366baafe2fd2e99d1b6c5ca">my::DocumentEntity::Ptr</a></div><div class="ttdeci">std::unique_ptr&lt; DocumentEntity &gt; Ptr</div><div class="ttdef"><b>Definition:</b> document_entity.h:22</div></div>
 <div class="ttc" id="anamespacemy_html"><div class="ttname"><a href="namespacemy.html">my</a></div><div class="ttdef"><b>Definition:</b> application.h:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
